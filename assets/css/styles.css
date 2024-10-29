@@ -1,0 +1,73 @@
+body {
+background-image: url('../images/supremo_crm_background_login.jpg'); 
+background-size: cover;
+background-position: center;
+font-family: sans-serif; 
+}
+
+.login-container {
+background-color: rgba(128, 10, 112, 0.9);
+padding: 30px;
+border-radius: 10px;
+margin-top: 30px; 
+}
+
+.btn-google {
+background-color: #dd4b39;
+color: white;
+}
+.btn-facebook {
+background-color: #3b5998;
+color: white;
+}
+
+.text-light {
+color: white;
+}
+
+.notificacoes_container {
+  background-color: rgba(128, 10, 112, 0.9);
+  padding: 30px;
+  border-radius: 10px;
+  margin-top: 90px;
+  margin-bottom: 90px;
+  max-width: 600px; 
+  margin-left: auto; 
+  margin-right: auto; 
+}
+
+
+h1, h2, #notification-form {
+  text-align: center;
+}
+
+.notification {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+
+.notification .btn {
+  margin-left: 10px;
+}
+
+.notification .delete {
+  float: right;
+  cursor: pointer;
+  color: #dc3545;
+}
+
+
+#notification-form {
+  margin-top: 20px;
+}
+
+.body_notificacoes {
+  background-image: url('../images/supremo_crm_background_login.jpg'); 
+  background-size: cover;
+  background-position: center;
+  font-family: sans-serif;
+}

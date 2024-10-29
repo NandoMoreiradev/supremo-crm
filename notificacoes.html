@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./assets/images/logo_icone_supremo_crm.png" type="image/x-icon">
+    <title>Controle de Notificações</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+
+<body class="body_notificacoes">
+    <div class="notificacoes_container">
+        <img class="mb-5" src="../assets/images/logo-supremo-branco.png" alt="" width="192" height="57">
+        <h1 class="text-white">Controle de Notificações</h1>
+
+        <div id="notification-list">
+            <!-- as notificações serão adicionadas aqui dinamicamente -->
+        </div>
+
+        <div class="mt-5">
+            <h2 class="text-white">Cadastrar Notificação</h2>
+            <form id="notification-form">
+                <div class="mb-3">
+                    <label for="title" class="form-label text-white">Título:</label>
+                    <input type="text" class="form-control" id="title" required>
+                </div>
+                <div class="mb-3">
+                    <label for="message" class="form-label text-white">Mensagem:</label>
+                    <textarea class="form-control" id="message" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+
+        let notifications = [
+            { id: 1, title: "Notificação 1", message: "Mensagem da notificação 1" },
+            { id: 2, title: "Notificação 2", message: "Mensagem da notificação 2" },
+        ];
+
+
+        function displayNotifications() {
+            document.getElementById("notification-list").innerHTML = "";
+
+            notifications.forEach(notification => {
+                const notificationDiv = document.createElement("div");
+                notificationDiv.classList.add("notification");
+                notificationDiv.innerHTML = `<h3>${notification.title}</h3><p>${notification.message}</p><span class="delete" data-id="${notification.id}">Excluir</span>`;
+                document.getElementById("notification-list").appendChild(notificationDiv);
+                
+                const deleteButton = notificationDiv.querySelector(".delete");
+                deleteButton.addEventListener("click", () => {
+                    const id = deleteButton.dataset.id;
+                    notifications = notifications.filter(n => n.id !== parseInt(id));
+                    displayNotifications();
+                });
+            });
+        }
+
+        displayNotifications();
+
+        // evento de envio do formulário
+        document.getElementById("notification-form").addEventListener("submit", (event) => {
+            event.preventDefault();
+            const newNotification = {
+                id: Date.now(),
+                title: document.getElementById("title").value,
+                message: document.getElementById("message").value
+            };
+
+            notifications.push(newNotification);
+            displayNotifications();
+            document.getElementById("notification-form").reset(); // limpa o formulário
+
+        });
+
+
+    </script>
+</body>
+
+</html>
